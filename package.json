@@ -1,0 +1,21 @@
+{
+  "name": "tetris-js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.4.0",
+    "husky": "^9.0.11",
+    "prettier": "3.3.1",
+    "vite": "^5.2.0"
+  }
+}
