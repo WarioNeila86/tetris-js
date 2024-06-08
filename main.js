@@ -59,6 +59,18 @@ const piece = {
   ],
 };
 
+// 4. Move piece
+
+document.addEventListener("keydown", event => {
+  if (event.key === "ArrowLeft") {
+    piece.position.x--;
+  } else if (event.key === "ArrowRight") {
+    piece.position.x++;
+  } else if (event.key === "ArrowDown") {
+    piece.position.y++;
+  }
+});
+
 // Game loop & draw
 
 function update() {
