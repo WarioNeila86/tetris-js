@@ -1,2 +1,1 @@
-npx prettier --write .
-npx eslint --fix .
+npx lint-staged
