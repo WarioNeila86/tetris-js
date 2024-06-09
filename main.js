@@ -46,7 +46,7 @@ const board = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0],
+  [1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
 ];
 
 // 3. Player piece
@@ -77,6 +77,7 @@ document.addEventListener("keydown", event => {
     if (checkCollision(piece, board)) {
       piece.position.y--;
       solidifyPiece(piece, board);
+      removeRows(board);
     }
   }
 });
@@ -105,6 +106,25 @@ function solidifyPiece(piece, board) {
   // Reset piece position
   piece.position.x = 5;
   piece.position.y = 5;
+}
+
+// 7. Remove rows
+
+function removeRows(board) {
+  // Find rows to remove
+  const rowsToRemove = [];
+  board.forEach((row, index) => {
+    if (row.every(value => value === 1)) {
+      rowsToRemove.push(index);
+    }
+  });
+  rowsToRemove.forEach(row => {
+    // Remove row
+    board.splice(row, 1);
+    // Add new row at the beginning
+    const newRow = Array(BOARD_WIDTH).fill(0);
+    board.unshift(newRow);
+  });
 }
 
 // Game loop & draw
