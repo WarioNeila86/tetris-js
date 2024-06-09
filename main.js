@@ -52,7 +52,7 @@ const board = [
 // 3. Player piece
 
 const piece = {
-  position: { x: 5, y: 5 },
+  position: { x: 5, y: 0 },
   shape: [
     [1, 1],
     [1, 1],
@@ -128,9 +128,13 @@ function solidifyPiece(piece, board) {
   );
   // Reset piece position
   piece.position.x = 5;
-  piece.position.y = 5;
+  piece.position.y = 0;
   // Set random shape
   piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)];
+  if (checkCollision(piece, board)) {
+    window.alert('Game Over!!');
+    board.forEach(row => row.fill(0));
+  }
 }
 
 // 7. Remove rows
