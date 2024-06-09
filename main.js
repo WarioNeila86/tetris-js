@@ -1,5 +1,5 @@
 import "./style.css";
-import { ARROW_KEYS, BLOCK_SIZE, BOARD_HEIGHT, BOARD_WIDTH } from "./constants.js";
+import { ARROW_KEYS, BLOCK_SIZE, BOARD_HEIGHT, BOARD_WIDTH, PIECES } from "./constants.js";
 
 // 1. Initialize canvas and context
 
@@ -33,38 +33,6 @@ const piece = {
     [1, 1],
   ],
 };
-
-// Random pieces
-
-const PIECES = [
-  [
-    [1, 1],
-    [1, 1],
-  ],
-  [[1, 1, 1, 1]],
-  [
-    [0, 1, 0],
-    [1, 1, 1],
-  ],
-  [
-    [1, 1, 0],
-    [0, 1, 1],
-  ],
-  [
-    [0, 1, 1],
-    [1, 1, 0],
-  ],
-  [
-    [1, 0],
-    [1, 0],
-    [1, 1],
-  ],
-  [
-    [0, 1],
-    [0, 1],
-    [1, 1],
-  ],
-];
 
 // 4. Move piece
 
