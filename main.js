@@ -64,12 +64,31 @@ const piece = {
 document.addEventListener("keydown", event => {
   if (event.key === "ArrowLeft") {
     piece.position.x--;
+    if (checkCollision(piece, board)) {
+      piece.position.x++;
+    }
   } else if (event.key === "ArrowRight") {
     piece.position.x++;
+    if (checkCollision(piece, board)) {
+      piece.position.x--;
+    }
   } else if (event.key === "ArrowDown") {
     piece.position.y++;
+    if (checkCollision(piece, board)) {
+      piece.position.y--;
+    }
   }
 });
+
+// 5. Collision detection
+
+function checkCollision(piece, board) {
+  return piece.shape.find((row, y) =>
+    row.find(
+      (value, x) => value !== 0 && board[y + piece.position.y]?.[x + piece.position.x] !== 0,
+    ),
+  );
+}
 
 // Game loop & draw
 
