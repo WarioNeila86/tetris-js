@@ -6,6 +6,7 @@ import { ARROW_KEYS, BLOCK_SIZE, BOARD_HEIGHT, BOARD_WIDTH, PIECES } from "./con
 const canvas = document.querySelector("#board");
 const context = canvas.getContext("2d");
 const $score = document.getElementById("score-text");
+const $level = document.getElementById("level-text");
 
 canvas.width = BLOCK_SIZE * BOARD_WIDTH;
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
@@ -13,6 +14,7 @@ canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
 context.scale(BLOCK_SIZE, BLOCK_SIZE);
 
 let score = 0;
+let level = 1;
 
 // 2. Create board
 
@@ -121,6 +123,10 @@ function removeRows(board) {
     board.unshift(newRow);
     // Update score
     score += 10;
+    // Update difficulty
+    if (score % 50 === 0) {
+      level++;
+    }
   });
 }
 
@@ -134,7 +140,8 @@ function update(time = 0) {
   lastTime = time;
 
   dropCounter += deltaTime;
-  if (dropCounter > 1000) {
+  let dropInterval = 1000;
+  if (dropCounter > dropInterval) {
     piece.position.y++;
     if (checkCollision(piece, board)) {
       piece.position.y--;
@@ -142,6 +149,7 @@ function update(time = 0) {
       removeRows(board);
     }
     dropCounter = 0;
+    dropInterval /= level;
   }
 
   draw();
@@ -171,6 +179,7 @@ function draw() {
   });
 
   $score.innerText = score;
+  $level.innerText = level;
 }
 
 update();

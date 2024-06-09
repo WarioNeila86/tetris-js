@@ -9,8 +9,8 @@ This is a Tetris game implemented using JavaScript, HTML, and CSS. The game is b
 - Classic Tetris gameplay
 - Score tracking
 - Game over and restart functionality
+- Level progression
 - ~~Next piece preview~~ (not implemented yet)
-- ~~Level progression~~ (not implemented yet)
 - ~~Sound effects~~ (not implemented yet)
 - ~~Responsive design for various screen sizes~~ (not implemented yet)
 

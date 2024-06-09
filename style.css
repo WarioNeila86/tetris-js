@@ -21,10 +21,12 @@ body {
   height: 100vh;
 }
 
-#score-section {
-  text-align: right;
+#score {
+  float: left;
+  margin-left: 0.5em;
 }
 
-#score-text {
-  margin-left: 0.5em;
+#level {
+  float: right;
+  margin-right: 0.5em;
 }
