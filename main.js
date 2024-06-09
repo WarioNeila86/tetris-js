@@ -102,6 +102,20 @@ document.addEventListener("keydown", event => {
       solidifyPiece(piece, board);
       removeRows(board);
     }
+  } else if (event.key === "ArrowUp") {
+    const rotatedShape = [];
+    for (let i = 0; i < piece.shape[0].length; i++) {
+      const row = [];
+      for (let j = piece.shape.length - 1; j >= 0; j--) {
+        row.push(piece.shape[j][i]);
+      }
+      rotatedShape.push(row);
+    }
+    const previousShape = piece.shape;
+    piece.shape = rotatedShape;
+    if (checkCollision(piece, board)) {
+      piece.shape = previousShape;
+    }
   }
 });
 
@@ -132,7 +146,7 @@ function solidifyPiece(piece, board) {
   // Set random shape
   piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)];
   if (checkCollision(piece, board)) {
-    window.alert('Game Over!!');
+    window.alert("Game Over!!");
     board.forEach(row => row.fill(0));
   }
 }
