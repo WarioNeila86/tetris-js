@@ -4,6 +4,10 @@
 
 This is a Tetris game implemented using JavaScript, HTML, and CSS. The game is based on the popular Tetris game and is built following the tutorial provided in the [YouTube video](https://www.youtube.com/watch?v=pNiyz0sl1no).
 
+<a href="./public/screenshot.png" title="Click to view full size">
+<img src="./public/screenshot.png" alt="Tetris JS Screenshot" width="250"/>
+</a>
+
 ## Features
 
 - Classic Tetris gameplay
