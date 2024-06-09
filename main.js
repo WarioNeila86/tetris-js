@@ -59,6 +59,29 @@ const piece = {
   ],
 };
 
+// Random pieces
+
+const PIECES = [
+  [
+    [1, 1],
+    [1, 1],
+  ],
+  [[1, 1, 1, 1]],
+  [
+    [0, 1, 0],
+    [1, 1, 1],
+  ],
+  [
+    [1, 1, 0],
+    [0, 1, 1],
+  ],
+  [
+    [1, 0],
+    [1, 0],
+    [1, 1],
+  ],
+];
+
 // 4. Move piece
 
 document.addEventListener("keydown", event => {
@@ -106,6 +129,8 @@ function solidifyPiece(piece, board) {
   // Reset piece position
   piece.position.x = 5;
   piece.position.y = 5;
+  // Set random shape
+  piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)];
 }
 
 // 7. Remove rows
