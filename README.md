@@ -36,4 +36,4 @@ npm run dev
 
 ## Acknowledgements
 
-- [midudev](https://github.com/midudev/midudev) for the tutorial and inspiration.
+- [midudev](https://github.com/midudev) for the tutorial and inspiration.
