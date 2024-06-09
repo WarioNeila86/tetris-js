@@ -4,6 +4,7 @@ import "./style.css";
 
 const canvas = document.querySelector("#board");
 const context = canvas.getContext("2d");
+const $score = document.getElementById("score-text");
 
 const BLOCK_SIZE = 20;
 const BOARD_WIDTH = 14;
@@ -13,6 +14,8 @@ canvas.width = BLOCK_SIZE * BOARD_WIDTH;
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
 
 context.scale(BLOCK_SIZE, BLOCK_SIZE);
+
+let score = 0;
 
 // 2. Create board
 
@@ -146,7 +149,7 @@ function solidifyPiece(piece, board) {
   // Set random shape
   piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)];
   if (checkCollision(piece, board)) {
-    window.alert("Game Over!!");
+    window.alert(`Game Over!! Your score was: ${score}`);
     board.forEach(row => row.fill(0));
   }
 }
@@ -167,6 +170,8 @@ function removeRows(board) {
     // Add new row at the beginning
     const newRow = Array(BOARD_WIDTH).fill(0);
     board.unshift(newRow);
+    // Update score
+    score += 10;
   });
 }
 
@@ -215,6 +220,8 @@ function draw() {
       }
     });
   });
+
+  $score.innerText = score;
 }
 
 update();
