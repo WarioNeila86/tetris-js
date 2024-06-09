@@ -129,7 +129,24 @@ function removeRows(board) {
 
 // Game loop & draw
 
-function update() {
+let dropCounter = 0;
+let lastTime = 0;
+
+function update(time = 0) {
+  const deltaTime = time - lastTime;
+  lastTime = time;
+
+  dropCounter += deltaTime;
+  if (dropCounter > 1000) {
+    piece.position.y++;
+    if (checkCollision(piece, board)) {
+      piece.position.y--;
+      solidifyPiece(piece, board);
+      removeRows(board);
+    }
+    dropCounter = 0;
+  }
+
   draw();
   window.requestAnimationFrame(update);
 }
