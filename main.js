@@ -1,14 +1,11 @@
 import "./style.css";
+import { ARROW_KEYS, BLOCK_SIZE, BOARD_HEIGHT, BOARD_WIDTH } from "./constants.js";
 
 // 1. Initialize canvas and context
 
 const canvas = document.querySelector("#board");
 const context = canvas.getContext("2d");
 const $score = document.getElementById("score-text");
-
-const BLOCK_SIZE = 20;
-const BOARD_WIDTH = 14;
-const BOARD_HEIGHT = 30;
 
 canvas.width = BLOCK_SIZE * BOARD_WIDTH;
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
@@ -63,24 +60,24 @@ const PIECES = [
 // 4. Move piece
 
 document.addEventListener("keydown", event => {
-  if (event.key === "ArrowLeft") {
+  if (event.key === ARROW_KEYS.LEFT) {
     piece.position.x--;
     if (checkCollision(piece, board)) {
       piece.position.x++;
     }
-  } else if (event.key === "ArrowRight") {
+  } else if (event.key === ARROW_KEYS.RIGHT) {
     piece.position.x++;
     if (checkCollision(piece, board)) {
       piece.position.x--;
     }
-  } else if (event.key === "ArrowDown") {
+  } else if (event.key === ARROW_KEYS.DOWN) {
     piece.position.y++;
     if (checkCollision(piece, board)) {
       piece.position.y--;
       solidifyPiece(piece, board);
       removeRows(board);
     }
-  } else if (event.key === "ArrowUp") {
+  } else if (event.key === ARROW_KEYS.UP) {
     const rotatedShape = [];
     for (let i = 0; i < piece.shape[0].length; i++) {
       const row = [];
