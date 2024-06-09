@@ -76,6 +76,7 @@ document.addEventListener("keydown", event => {
     piece.position.y++;
     if (checkCollision(piece, board)) {
       piece.position.y--;
+      solidifyPiece(piece, board);
     }
   }
 });
@@ -88,6 +89,22 @@ function checkCollision(piece, board) {
       (value, x) => value !== 0 && board[y + piece.position.y]?.[x + piece.position.x] !== 0,
     ),
   );
+}
+
+// 6. Solidify piece
+
+function solidifyPiece(piece, board) {
+  // Add piece to board
+  piece.shape.forEach((row, y) =>
+    row.forEach((value, x) => {
+      if (value === 1) {
+        board[y + piece.position.y][x + piece.position.x] = 1;
+      }
+    }),
+  );
+  // Reset piece position
+  piece.position.x = 5;
+  piece.position.y = 5;
 }
 
 // Game loop & draw
